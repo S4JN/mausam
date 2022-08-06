@@ -1,0 +1,16 @@
+{
+  "name": "mausam",
+  "version": "1.0.0",
+  "description": "weather app uing api openweather",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Srajan Acharya",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.27.2",
+    "express": "^4.18.1",
+    "hbs": "^4.2.0"
+  }
+}
