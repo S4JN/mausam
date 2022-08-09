@@ -1,57 +1,146 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <!-- boostrap -->
-   <!-- CSS only -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <!-- boostrap -->
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
     <!-- JavaScript Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
-   
-   
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+        crossorigin="anonymous"></script>
+
+    <script src="https://kit.fontawesome.com/e02877bea9.js" crossorigin="anonymous"></script>
     <!-- styles -->
     <link rel="stylesheet" href="styles/style.css">
+
+    {{!-- fonts --}}
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap" rel="stylesheet">
+
+
     <title>Mausam</title>
 </head>
+
 <body>
-<div class="container-fluid">
+    <div class="container-fluid">
 
-    <div class="row">
-        <div class="box ">
-            <div class="searchBOx">
-                
-                <form  method="post" action="/loc">
-                    <input type="text" name="location" placeholder="Enter Location">
-                    <button type="submit">Search</button>
+        <div class="row">
+            <div class="box ">
+                <div class="searchBox">
+
+                    <form method="post" action="/" autocomplete="off">
+
+                        <div class="row">
+                            <div class="col-12">
+                                <input type="text" name="location" class="form-control city-search"
+                                    placeholder="Enter Location">
+                            </div>
+                            <div class="col mag">
+                                <button type="submit" class="btn btn-link  subm"><i
+                                        class="fa-solid fa-magnifying-glass"></i></button>
+                            </div>
+                        </div>
+                    </form>
 
 
-                </form>
-                
-                
-            </div>
-
-            <div class="location">
-                <h2>Indore,IN</h2>
-            </div>
-
-            <div class="temperatureBOx">
-                <div class="temperature">
-                    <h1>45°C</h1>
                 </div>
-                <div class="weatthercon">
-                    
+
+                
+                {{#if temperature}}
+
+                <div class="temperatureBox">
+
+                    <div class="row">
+
+                        <div class="col">
+                            <div class="temperature">
+                                <h1 class="tt"> {{temperature}} °C</h1>
+                            </div>
+                            <div class="location">
+                                <h2 class="cc" id="cityName"> {{city}},{{country}} </h2>
+                            </div>
+                        </div>
+
+                        <div class="col">
+
+                            <div class="weathercon">
+                                <div class="row">
+                                    <div class="col conar">
+
+                                        {{!-- condition check only bool --}}
+
+                                        {{#if isSunny}}
+
+                                        <i class="fa-solid fa-sun" style="color:  #FCE570;"></i>
+                                        {{else if isRain}}
+                                        <i class="fa-solid fa-cloud-rain"></i>
+
+                                        {{else}}
+                                        <i class="fa-solid fa-cloud"></i>
+                                        {{/if}}
+
+                                    </div>
+                                    <div class="col">
+
+                                        <p class="desp"> {{weaDesp}} </p>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="info">
+                                <p>Humidity - {{humidity}} %</p>
+                            </div>
+
+                            <div class="dateAndTime">
+                                <p>{{date}}</p>
+                            </div>
+
+                        </div>
+
+                    </div>
                 </div>
+
+                {{else if msg}}
+                    <p> {{msg}} </p>
+
+                  {{else }}
+                  <p>enter a location</p>  
+                {{/if}}
+
+                {{!-- background-img --}}
+
             </div>
-
-            <div class="dateAndTime">
-                <p>12-09-98</p>
-            </div>
-
-
         </div>
     </div>
-</div>   
+
+    {{!-- <div class="footer">
+        <p> made by Srajan</p>
+
+    </div> --}}
+
+    <div class="bg-img">
+        <img src="backgound.jpg" alt="immm" class="bg-imgg">
+    </div>
+
+    {{!-- --}}
+
+    <script>
+        if (window.history.replaceState) {
+            window.history.replaceState(null, null, window.location.href);
+        }
+    </script>
 </body>
+
 </html>
